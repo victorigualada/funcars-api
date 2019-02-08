@@ -1,9 +1,7 @@
 package com.funcars.api.service;
 
 import com.funcars.api.entity.Car;
-import com.funcars.api.entity.Client;
 import com.funcars.api.repository.CarRepository;
-import com.funcars.api.repository.ClientRepository;
 import org.assertj.core.util.IterableUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +29,9 @@ public class CarService {
 
     public void deleteById(Long id) {
         carRepository.deleteById(id);
+    }
+
+    public void update(Car car) {
+        create(car);
     }
 }

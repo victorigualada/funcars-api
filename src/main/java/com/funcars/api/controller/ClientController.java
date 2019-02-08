@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clients")
@@ -25,8 +26,8 @@ class ClientController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Client findOne(@PathVariable("id") Long id) {
-        return (Client) RestPreconditions.checkFound(clientService.findOne(id));
+    public Optional<Client> findOne(@PathVariable("id") Long id) {
+        return RestPreconditions.checkFound(clientService.findOne(id));
     }
 
    @PostMapping
@@ -41,7 +42,7 @@ class ClientController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable( "id" ) Long id, @RequestBody Client client) {
         Preconditions.checkNotNull(client);
-        RestPreconditions.checkNotNull(clientService.getById(client.getId()));
+        RestPreconditions.checkNotNull(clientService.findOne(client.getId()));
         clientService.update(client);
     }
 

@@ -1,6 +1,5 @@
 package com.funcars.api.entity;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -21,5 +20,9 @@ public class Wash {
         this.car = car;
         this.client = client;
         this.whaser = whaser;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
